@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 the original author or authors.
+ * Copyright 2010-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
@@ -18,19 +18,42 @@
  * @author Andres Almiray
  */
 class SerialGriffonPlugin {
-    def version = 0.3
-    def dependsOn = [:]
-    def platforms = ['linux', 'windows', 'windows64', 'macosx']
-    def griffonVersion = '0.9.2 > *'
-    def license = 'Apache Software License 2.0'
+    // the plugin version
+    String version = '0.4'
+    // the version or versions of Griffon the plugin is designed for
+    String griffonVersion = '0.9.5 > *'
+    // the other plugins this plugin depends on
+    Map dependsOn = [:]
+    // resources that are included in plugin packaging
+    List pluginIncludes = []
+    // the plugin license
+    String license = 'Apache Software License 2.0'
+    // Toolkit compatibility. No value means compatible with all
+    // Valid values are: swing, javafx, swt, pivot, gtk
+    List toolkits = ['swing']
+    // Platform compatibility. No value means compatible with all
+    // Valid values are:
+    // linux, linux64, windows, windows64, macosx, macosx64, solaris
+    List platforms = ['linux', 'windows', 'windows64', 'macosx']
+    // URL where documentation can be found
+    String documentation = ''
+    // URL where source can be found
+    String source = 'https://github.com/griffon/griffon-serial-plugin'
 
-    def author = 'Andres Almiray'
-    def authorEmail = 'aalmiray@users.sourceforge.net'
-    def title = 'Serial port communication libraries'
-    def description = '''
-Serial port communication libraries
+    List authors = [
+        [
+            name: 'Hackergarten',
+            email: 'hackergarten@hackergarten.net'
+        ]
+    ]
+    String title = 'Serial port support'
+    String description = '''
+Adds support for communicating with the serial port via the rxtx library.
+
+Usage
+-----
+
+There are no new nodes nor scripts provided by this plugin. It simply delivers the correct native libraries depending on the target
+platform. Supported platforms are: Linux, Windows and OSX.
 '''
-
-    // URL to the plugin's documentation
-    def documentation = 'http://griffon.codehaus.org/Serial+Plugin'
 }
